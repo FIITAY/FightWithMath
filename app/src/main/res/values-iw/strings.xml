@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FightWithMath</string>
+    <string name="bPlay">שחק עכשיו</string>
+    <string name="bShop">חנות</string>
+    <string name="bHelp">מטרת המשחק</string>
+    <string name="bCredit">קרדיט</string>
+</resources>

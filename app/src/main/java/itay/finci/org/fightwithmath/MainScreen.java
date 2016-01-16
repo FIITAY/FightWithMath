@@ -1,13 +1,16 @@
 package itay.finci.org.fightwithmath;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 
 public class MainScreen extends AppCompatActivity {
 
@@ -17,6 +20,16 @@ public class MainScreen extends AppCompatActivity {
         setContentView(R.layout.activity_main_screen);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        Button bCredit = (Button) findViewById(R.id.bCredit);
+        Log.d("mainscreen", "found button" + bCredit);
+        bCredit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("mainscreen", "clicked");
+                startActivity(new Intent(getApplicationContext(), Credit.class));
+
+            }
+        });
 
     }
 

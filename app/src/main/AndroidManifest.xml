@@ -14,7 +14,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <action android:name="itay.finci.org.fightwithmath.MainScreen"/>
+                <action android:name="itay.finci.org.fightwithmath.MainScreen" />
             </intent-filter>
         </activity>
         <activity
@@ -26,6 +26,15 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".Credit"
+            android:label="@string/title_activity_credit"
+            android:parentActivityName=".MainScreen"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="itay.finci.org.fightwithmath.MainScreen" />
         </activity>
     </application>
 
