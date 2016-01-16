@@ -14,7 +14,9 @@
         android:layout_height="wrap_content"
         android:text="@string/bPlay"
         android:id="@+id/bPlay"
-        android:layout_marginTop="131dp"
+        android:textColor="@color/Maincolor"
+        android:textSize="32dp"
+        android:layout_marginTop="57dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
@@ -23,25 +25,33 @@
         android:layout_height="wrap_content"
         android:text="@string/bShop"
         android:id="@+id/bShop"
+        android:textColor="@color/Maincolor"
+        android:textSize="32dp"
         android:layout_below="@+id/bPlay"
         android:layout_alignLeft="@+id/bPlay"
         android:layout_alignStart="@+id/bPlay"
-        android:layout_marginTop="39dp" />
+        android:layout_marginTop="39dp"
+        android:layout_marginLeft="35dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/bHelp"
         android:id="@+id/bHelp"
-        android:layout_marginTop="46dp"
+        android:textColor="@color/Maincolor"
+        android:textSize="32dp"
+        android:layout_marginTop="55dp"
         android:layout_below="@+id/bShop"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="10dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/bCredit"
         android:id="@+id/bCredit"
+        android:textColor="@color/Maincolor"
+        android:textSize="32dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />

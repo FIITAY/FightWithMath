@@ -20,16 +20,8 @@ public class MainScreen extends AppCompatActivity {
         setContentView(R.layout.activity_main_screen);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        Button bCredit = (Button) findViewById(R.id.bCredit);
-        Log.d("mainscreen", "found button" + bCredit);
-        bCredit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d("mainscreen", "clicked");
-                startActivity(new Intent(getApplicationContext(), Credit.class));
+        buttonintent();
 
-            }
-        });
 
     }
 
@@ -53,5 +45,49 @@ public class MainScreen extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+    public void buttonintent(){
+        /**
+         * this function will take all the buttons and make the intent for them when they presed.
+         */
+        //credit button start
+        Button bCredit = (Button) findViewById(R.id.bCredit);
+        bCredit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), Credit.class));
+
+            }
+        });
+        //credit button end
+        //playgame button start
+        Button bPlay = (Button) findViewById(R.id.bPlay);
+        bPlay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), GameActivity.class));
+            }
+        });
+        //playgame button end
+        //shop button start
+        Button bShop = (Button) findViewById(R.id.bShop);
+        bShop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), ShopActivity.class));
+            }
+        });
+        //shop button end
+        //purpose button start
+        Button bHelp = (Button) findViewById(R.id.bHelp);
+        bHelp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), PurposeActivity.class));
+            }
+        });
+        //purpose button end
+
+
     }
 }
