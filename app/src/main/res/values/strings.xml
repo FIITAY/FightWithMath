@@ -6,5 +6,6 @@
     <string name="bPlay">PLAY NOW</string>
     <string name="bShop">Shop</string>
     <string name="bHelp">the purpose of the game</string>
-    <string name="title_activity_credit">Credit</string>
+    <string name="title_activity_credit" translatable="false">Credit</string>
+    <string name="credit"><![CDATA[Makers off the app: Itay Finci &  Itay Chairman]]></string>
 </resources>

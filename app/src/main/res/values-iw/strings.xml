@@ -5,4 +5,6 @@
     <string name="bShop">חנות</string>
     <string name="bHelp">מטרת המשחק</string>
     <string name="bCredit">קרדיט</string>
+    <string name="credit"><![CDATA[יוצרי המשחק: איתי פינצי & איתי צרמן]]></string>
+    <string name="title_activity_credit" translatable="false"></string>
 </resources>
