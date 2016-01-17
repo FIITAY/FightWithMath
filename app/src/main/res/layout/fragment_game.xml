@@ -10,4 +10,25 @@
     tools:showIn="@layout/activity_game">
 
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="30"
+        android:textSize="32dp"
+        android:textColor="@color/Maincolor"
+        android:id="@+id/timer1"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="71dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/bSolve"
+        android:id="@+id/bSolve"
+        android:textSize="32dp"
+        android:textColor="@color/Maincolor"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
