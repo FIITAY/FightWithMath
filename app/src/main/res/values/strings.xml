@@ -13,6 +13,8 @@
     <string name="title_activity_purpose" translatable="false">PurposeActivity</string>
     <string name="timeout">time is out</string>
     <string name="bSolve">solved!</string>
-    <string name="finishtimepart1">You finished</string>
-    <string name="finishtimepart2">seconds before the time ends</string>
+    <string name="tTimer">time:</string>
+    <string name="RIghtAwnser">congratz you are right you won</string>
+    <string name="RightAwnser2">points to your score</string>
+    <string name="falseawnser">you didnt answer right the cuestion</string>
 </resources>

@@ -31,4 +31,51 @@
         android:textColor="@color/Maincolor"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/etAwnser"
+        android:textSize="32dp"
+        android:textColor="@color/Maincolor"
+        android:layout_above="@+id/bSolve"
+        android:layout_alignLeft="@+id/timer1"
+        android:layout_alignStart="@+id/timer1" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="X="
+        android:id="@+id/tXequ"
+        android:textSize="32dp"
+        android:textColor="@color/Maincolor"
+        android:layout_alignTop="@+id/etAwnser"
+        android:layout_toLeftOf="@+id/timer1"
+        android:layout_toStartOf="@+id/timer1" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/tEquls"
+        android:text="placeholdertext"
+        android:textSize="32dp"
+        android:textColor="@color/Maincolor"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/tTimer"
+        android:id="@+id/tTimer"
+        android:textSize="32dp"
+        android:textColor="@color/Maincolor"
+        android:layout_alignTop="@+id/timer1"
+        android:layout_alignRight="@+id/tXequ"
+        android:layout_alignEnd="@+id/tXequ" />
 </RelativeLayout>

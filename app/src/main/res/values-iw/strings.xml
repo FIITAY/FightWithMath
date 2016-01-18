@@ -6,9 +6,9 @@
     <string name="bHelp">מטרת המשחק</string>
     <string name="bCredit">קרדיט</string>
     <string name="credit"><![CDATA[יוצרי המשחק: איתי פינצי & איתי צרמן]]></string>
-    <string name="title_activity_credit" translatable="false"></string>
     <string name="timeout">הזמן נגמר</string>
     <string name="bSolve">פתרתי!</string>
-    <string name="finishtimepart1">סיימת את התרגיל</string>
-    <string name="finishtimepart2">שניות לפני שהזמן נגמר!</string>
+    <string name="tTimer">זמן לסיום:</string>
+    <string name="RIghtAwnser">כל הכבוד צדקת! זכיתה ב</string>
+    <string name="RightAwnser2">נקודות לניקוד שלך</string>
 </resources>
