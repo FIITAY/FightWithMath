@@ -17,4 +17,5 @@
     <string name="RIghtAwnser">congratz you are right you won</string>
     <string name="RightAwnser2">points to your score</string>
     <string name="falseawnser">you didnt answer right the cuestion</string>
+    <string name="sContinuing">switch for auto continiu</string>
 </resources>
