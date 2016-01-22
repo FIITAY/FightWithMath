@@ -1,18 +1,23 @@
 package itay.finci.org.fightwithmath;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,9 +32,11 @@ public class GameActivity extends AppCompatActivity {
     TextView timerView,tEquls;
     Button bSolve;
     EditText etAwnser;
+    Switch sConinu;
     double answer,trueAnser;
     long timersec;
     int placeindata;
+    static boolean autoconinue = false;
     Random random;
 
     @Override
@@ -43,6 +50,7 @@ public class GameActivity extends AppCompatActivity {
         timerView = (TextView) findViewById(R.id.timer1);
         etAwnser=(EditText) findViewById(R.id.etAwnser);
         tEquls =(TextView) findViewById(R.id.tEquls) ;
+        sConinu =(Switch) findViewById(R.id.sContinuing);
 
         //setup equles database
          Equition[] equs =  {
@@ -74,7 +82,6 @@ public class GameActivity extends AppCompatActivity {
         trueAnser= equs[placeindata].getAnswer();
 
         coutdown = new CountDownTimer(30000, 1000) {
-
             public void onTick(long millisUntilFinished) {
                 timerView.setText(""+millisUntilFinished / 1000);
                 timersec = millisUntilFinished;
@@ -88,6 +95,15 @@ public class GameActivity extends AppCompatActivity {
             }
         };
         coutdown.start();
+
+        sConinu.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                autoconinue = isChecked;
+            }
+        });
+
+        sConinu.setChecked(autoconinue);
 
         bSolve= (Button) findViewById(R.id.bSolve);
         bSolve.setOnClickListener(new View.OnClickListener() {
@@ -107,6 +123,26 @@ public class GameActivity extends AppCompatActivity {
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();
                 }
+                if(autoconinue){
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+
+                            Intent i=new Intent(getApplicationContext(),GameActivity.class);
+                            startActivity(i);
+                        }
+                    }, 5000);
+                }else{
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+
+                            Intent i=new Intent(getApplicationContext(),MainScreen.class);
+                            startActivity(i);
+                        }
+                    }, 5000);
+                }
+
 
             }
         });
