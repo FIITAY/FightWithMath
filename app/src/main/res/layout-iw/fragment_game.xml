@@ -1,0 +1,136 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="itay.finci.org.fightwithmath.GameActivityFragment"
+    tools:showIn="@layout/activity_game"
+    android:orientation="vertical"
+    android:gravity="fill_vertical"
+    android:weightSum="1">
+
+
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sContinuing"
+        android:id="@+id/sContinuing"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/timer1"
+        android:layout_alignEnd="@+id/timer1"
+        android:layout_marginTop="54dp"
+        android:checked="false" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_weight="0.65"
+        android:layout_gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/tTimer"
+            android:id="@+id/tTimer"
+            android:textSize="32dp"
+            android:textColor="@color/Maincolor"
+            android:layout_centerVertical="true"
+
+            android:layout_gravity="center_vertical|bottom" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="30"
+            android:textSize="32dp"
+            android:textColor="@color/Maincolor"
+            android:id="@+id/timer1"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="bottom|center" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_weight="0.20">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/tEquls"
+            android:text="placeholdertext"
+            android:textSize="32dp"
+            android:textColor="@color/Maincolor"
+            android:layout_above="@+id/etAwnser"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.15"
+        android:weightSum="100">
+
+        <EditText
+            android:layout_width="237dp"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/etAwnser"
+            android:textSize="32dp"
+            android:textColor="@color/Maincolor"
+            android:layout_above="@+id/bSolve"
+            android:layout_alignLeft="@+id/timer1"
+            android:layout_alignStart="@+id/timer1"
+            android:layout_gravity="bottom|center" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="X="
+            android:id="@+id/tXequ"
+            android:textSize="32dp"
+            android:textColor="@color/Maincolor"
+            android:layout_alignBottom="@+id/etAwnser"
+            android:layout_toLeftOf="@+id/etAwnser"
+            android:layout_toStartOf="@+id/etAwnser"
+            android:layout_gravity="bottom|center"
+            android:layout_weight="18.71" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="122dp"
+        android:gravity="center"
+        android:layout_gravity="bottom">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bSolve"
+            android:id="@+id/bSolve"
+            android:textSize="32dp"
+            android:textColor="@color/Maincolor"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:gravity="center|clip_vertical"
+            android:layout_gravity="top" />
+    </LinearLayout>
+
+</LinearLayout>

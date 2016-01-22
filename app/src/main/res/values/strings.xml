@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FightWithMath</string>
+    <string name="app_name">Fight With Math</string>
     <string name="action_settings" translatable="false">Settings</string>
     <string name="title_activity_splash_screen" translatable="false">SplashScreen</string>
     <string name="bCredit">credits</string>

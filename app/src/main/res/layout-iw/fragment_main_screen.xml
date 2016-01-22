@@ -1,0 +1,54 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="itay.finci.org.fightwithmath.MainScreenFragment"
+    tools:showIn="@layout/activity_main_screen">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/bPlay"
+        android:id="@+id/bPlay"
+        android:textColor="#FF0000"
+        android:textSize="32dp"
+        android:layout_marginTop="63dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/bShop"
+        android:id="@+id/bShop"
+        android:textColor="#00FF00"
+        android:textSize="32dp"
+        android:layout_marginTop="43dp"
+        android:layout_below="@+id/bPlay"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/bHelp"
+        android:id="@+id/bHelp"
+        android:textColor="#0000FF"
+        android:textSize="32dp"
+        android:layout_marginTop="41dp"
+        android:layout_below="@+id/bShop"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/bCredit"
+        android:id="@+id/bCredit"
+        android:textColor="#FFFF00"
+        android:textSize="32dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+</RelativeLayout>
