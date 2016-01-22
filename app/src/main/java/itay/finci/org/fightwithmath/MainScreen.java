@@ -70,7 +70,10 @@ public class MainScreen extends AppCompatActivity {
         });
         //playgame button end
         //shop button start
+
         Button bShop = (Button) findViewById(R.id.bShop);
+        bShop.setVisibility(View.GONE);
+
         bShop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

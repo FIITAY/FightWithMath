@@ -45,8 +45,8 @@ public class GameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         timerView = (TextView) findViewById(R.id.timer1);
         etAwnser=(EditText) findViewById(R.id.etAwnser);
         tEquls =(TextView) findViewById(R.id.tEquls) ;
@@ -85,8 +85,12 @@ public class GameActivity extends AppCompatActivity {
             public void onTick(long millisUntilFinished) {
                 timerView.setText(""+millisUntilFinished / 1000);
                 timersec = millisUntilFinished;
-                if (millisUntilFinished/1000 < 10){
-                    timerView.setTextColor(Color.parseColor("#FF0808"));
+                if (millisUntilFinished/1000 <=30 && millisUntilFinished/1000 > 20  && millisUntilFinished/1000 != 20){
+                    timerView.setTextColor(Color.parseColor("#00FF00"));
+                }else if(millisUntilFinished/1000 <= 20 && millisUntilFinished/1000 > 10 && millisUntilFinished/1000 != 10){
+                    timerView.setTextColor(Color.parseColor("#0000FF"));
+                }else if(millisUntilFinished/1000 <= 10){
+                    timerView.setTextColor(Color.parseColor("#FF0000"));
                 }
             }
 
