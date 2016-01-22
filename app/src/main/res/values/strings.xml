@@ -16,6 +16,6 @@
     <string name="tTimer">time:</string>
     <string name="RIghtAwnser">congratz you are right you won</string>
     <string name="RightAwnser2">points to your score</string>
-    <string name="falseawnser" translatable="false">you didnt answer right the question</string>
-    <string name="sContinuing" translatable="false">switch for auto continue</string>
+    <string name="falseawnser">you didnt answer right the question</string>
+    <string name="sContinuing">switch for auto continue</string>
 </resources>

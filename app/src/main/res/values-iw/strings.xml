@@ -11,4 +11,6 @@
     <string name="tTimer">זמן לסיום:</string>
     <string name="RIghtAwnser">כל הכבוד צדקת! זכיתה ב</string>
     <string name="RightAwnser2">נקודות לניקוד שלך</string>
+    <string name="falseawnser">ענית לא נכון על השאלה</string>
+    <string name="sContinuing">הזז להמשך אוטומטי</string>
 </resources>
