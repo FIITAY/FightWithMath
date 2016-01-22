@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="itay.finci.org.fightwithmath"
     android:versionCode="2"
-    android:versionName="1.0.1 build 23">
+    android:versionName="1.0.1 build 24">
 
     <application
         android:allowBackup="true"
@@ -21,7 +21,6 @@
         </activity>
         <activity
             android:name=".SplashScreen"
-            android:label="@string/title_activity_splash_screen"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,7 +30,6 @@
         </activity>
         <activity
             android:name=".Credit"
-            android:label="@string/title_activity_credit"
             android:parentActivityName=".MainScreen"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
@@ -40,7 +38,6 @@
         </activity>
         <activity
             android:name=".GameActivity"
-            android:label="@string/title_activity_game"
             android:parentActivityName=".MainScreen"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
@@ -49,7 +46,6 @@
         </activity>
         <activity
             android:name=".ShopActivity"
-            android:label="@string/title_activity_shop"
             android:parentActivityName=".MainScreen"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
@@ -58,7 +54,6 @@
         </activity>
         <activity
             android:name=".PurposeActivity"
-            android:label="@string/title_activity_purpose"
             android:parentActivityName=".MainScreen"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
