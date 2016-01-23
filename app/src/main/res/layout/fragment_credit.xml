@@ -1,7 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:paddingTop="150sp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/app_name"
+        android:id="@+id/textView2"
+        android:layout_gravity="center"
+        android:textColor="@color/Maincolor"
+        android:textSize="35sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="2016"
+        android:id="@+id/textView"
+        android:layout_gravity="center"
+        android:textColor="@color/Maincolor"
+        android:paddingTop="20sp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -10,7 +31,9 @@
         android:text="@string/credit"
         android:id="@+id/tCredit"
         android:textColor="@color/Maincolor"
-        android:textSize="50dp"
+        android:textSize="22dp"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
-</RelativeLayout>
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:paddingTop="20sp" />
+</LinearLayout>

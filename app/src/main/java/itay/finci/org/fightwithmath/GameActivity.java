@@ -66,7 +66,7 @@ public class GameActivity extends AppCompatActivity {
                 new Equition("5(x+3)=125", 22),
                 new Equition("3(x-4)=9", 7),
                 new Equition("5(x-1)=15", 4),
-                new Equition("12(x-3)=24", 4),
+                new Equition("12(x-3)=24", 5),
                 new Equition("7(x-2)=7", 3),
                 new Equition("4(x-3)=20", 8),
                 new Equition("9(x-1)=9", 2),
