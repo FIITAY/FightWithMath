@@ -13,4 +13,6 @@
     <string name="RightAwnser2">נקודות לניקוד שלך</string>
     <string name="falseawnser">ענית לא נכון על השאלה</string>
     <string name="sContinuing">הזז להמשך אוטומטי</string>
+    <string name="score">ניקוד:</string>
+    <string name="action_settings" translatable="false"></string>
 </resources>

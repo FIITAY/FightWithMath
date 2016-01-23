@@ -48,7 +48,7 @@
         android:layout_alignParentStart="true" />
 
     <Button
-        android:layout_width="105dp"
+        android:layout_width="164dp"
         android:layout_height="85dp"
         android:id="@+id/bCredit"
         android:textColor="#FFFF00"
@@ -56,5 +56,5 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"
-        android:background="@drawable/copyright"/>
+        android:text="@string/bCredit" />
 </LinearLayout>

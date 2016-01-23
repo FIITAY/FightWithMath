@@ -14,22 +14,25 @@ import android.text.Editable;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Switch;
+import android.widget.TextClock;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
+import java.sql.Struct;
 import java.util.Random;
 
 import static android.widget.Toast.LENGTH_LONG;
 
 public class GameActivity extends AppCompatActivity {
     CountDownTimer coutdown;
-    TextView timerView,tEquls;
+    TextView timerView,tEquls, tScore;
     Button bSolve;
     EditText etAwnser;
     Switch sConinu;
@@ -38,23 +41,8 @@ public class GameActivity extends AppCompatActivity {
     int placeindata;
     static boolean autoconinue = false;
     Random random;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        timerView = (TextView) findViewById(R.id.timer1);
-        etAwnser=(EditText) findViewById(R.id.etAwnser);
-        tEquls =(TextView) findViewById(R.id.tEquls) ;
-        sConinu =(Switch) findViewById(R.id.sContinuing);
-
-        //setup equles database
-         Equition[] equs =  {
-                new Equition("2(x+5)=14", 2),
+    Equition[] equs =  {
+        new Equition("2(x+5)=14", 2),
                 new Equition("3(x+6)=21", 1),
                 new Equition("4(x+11)=56", 3),
                 new Equition("9(x+2)=72", 6),
@@ -73,6 +61,31 @@ public class GameActivity extends AppCompatActivity {
                 new Equition("3(x-5)=0", 5),
                 new Equition("43(x-8)=0", 8),
                 new Equition("17(x—1)=17", 2)};
+
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_game);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        timerView = (TextView) findViewById(R.id.timer1);
+        etAwnser = (EditText) findViewById(R.id.etAwnser);
+        tEquls = (TextView) findViewById(R.id.tEquls);
+        sConinu = (Switch) findViewById(R.id.sContinuing);
+        tScore =(TextView) findViewById(R.id.tScore);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        play();
+    }
+
+    private void play(){
         //SETUP randomizer of with 1 to choose
         random = new Random();
         placeindata = random.nextInt(equs.length);
@@ -80,6 +93,13 @@ public class GameActivity extends AppCompatActivity {
         tEquls.setText(equs[placeindata].getBody());
         //setup awnser in trueanser
         trueAnser= equs[placeindata].getAnswer();
+
+        tScore.setText(""+ ScoreManager.getInstance().getScore());
+
+        etAwnser.setText("");
+        etAwnser.requestFocus();
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.showSoftInput(etAwnser, InputMethodManager.SHOW_IMPLICIT);
 
         coutdown = new CountDownTimer(30000, 1000) {
             public void onTick(long millisUntilFinished) {
@@ -119,7 +139,9 @@ public class GameActivity extends AppCompatActivity {
                 int duration = Toast.LENGTH_LONG;
                 answer = Double.parseDouble(etAwnser.getText().toString());
                 if(answer == trueAnser){
-                    CharSequence text = getText(R.string.RIghtAwnser)+ " "+getText(R.string.RightAwnser2);
+                    String string = " "+timersec / 1000+" ";
+                    CharSequence text = getText(R.string.RIghtAwnser)+ string +getText(R.string.RightAwnser2);
+                    ScoreManager.getInstance().addScore(timersec / 1000);
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();
                 }else{
@@ -131,9 +153,7 @@ public class GameActivity extends AppCompatActivity {
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-
-                            Intent i=new Intent(getApplicationContext(),GameActivity.class);
-                            startActivity(i);
+                            play();
                         }
                     }, 5000);
                 }else{
