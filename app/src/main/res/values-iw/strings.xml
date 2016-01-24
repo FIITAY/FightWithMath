@@ -15,4 +15,5 @@
     <string name="sContinuing">הזז להמשך אוטומטי</string>
     <string name="score">ניקוד:</string>
     <string name="action_settings" translatable="false"></string>
+    <string name="noVrsion">גירסה</string>
 </resources>

@@ -19,4 +19,5 @@
     <string name="falseawnser">you didnt answer right the question</string>
     <string name="sContinuing">switch for auto continue</string>
     <string name="score">score:</string>
+    <string name="noVrsion">Version</string>
 </resources>

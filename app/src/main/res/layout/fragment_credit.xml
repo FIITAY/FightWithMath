@@ -36,4 +36,13 @@
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
         android:paddingTop="20sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/noVrsion"
+        android:id="@+id/tVersion"
+        android:layout_gravity="bottom|center"
+        android:gravity="bottom" />
 </LinearLayout>
