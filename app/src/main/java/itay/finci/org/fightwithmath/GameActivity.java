@@ -35,14 +35,15 @@ public class GameActivity extends AppCompatActivity {
     TextView timerView,tEquls, tScore;
     Button bSolve;
     EditText etAwnser;
-    Switch sConinu;
     double answer,trueAnser;
     long timersec;
     int placeindata;
     static boolean autoconinue = false;
     Random random;
+    int indexx[];
+    int index;
     Equition[] equs =  {
-        new Equition("2(x+5)=14", 2),
+                new Equition("2(x+5)=14", 2),
                 new Equition("3(x+6)=21", 1),
                 new Equition("4(x+11)=56", 3),
                 new Equition("9(x+2)=72", 6),
@@ -60,9 +61,14 @@ public class GameActivity extends AppCompatActivity {
                 new Equition("9(x-1)=9", 2),
                 new Equition("3(x-5)=0", 5),
                 new Equition("43(x-8)=0", 8),
-                new Equition("17(x—1)=17", 2)};
-
-
+                new Equition("17(x—1)=17", 2),
+                new Equition("2x+5=11", 3),
+                new Equition("3x+6=11-2x", 1),
+                new Equition("8+3x=2x+15", 7),
+                new Equition("x+11=4x-4",5),
+                new Equition("x/3+4=10",18),
+                new Equition("2x-3=11",7),
+                new Equition("13-x=x+3", 5)};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +81,6 @@ public class GameActivity extends AppCompatActivity {
         timerView = (TextView) findViewById(R.id.timer1);
         etAwnser = (EditText) findViewById(R.id.etAwnser);
         tEquls = (TextView) findViewById(R.id.tEquls);
-        sConinu = (Switch) findViewById(R.id.sContinuing);
         tScore =(TextView) findViewById(R.id.tScore);
     }
 
@@ -120,15 +125,6 @@ public class GameActivity extends AppCompatActivity {
         };
         coutdown.start();
 
-        sConinu.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                autoconinue = isChecked;
-            }
-        });
-
-        sConinu.setChecked(autoconinue);
-
         bSolve= (Button) findViewById(R.id.bSolve);
         bSolve.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -144,12 +140,6 @@ public class GameActivity extends AppCompatActivity {
                     ScoreManager.getInstance().addScore(timersec / 1000);
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();
-                }else{
-                    CharSequence text = getText(R.string.falseawnser);
-                    Toast toast = Toast.makeText(context, text, duration);
-                    toast.show();
-                }
-                if(autoconinue){
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
@@ -157,15 +147,17 @@ public class GameActivity extends AppCompatActivity {
                         }
                     }, 5000);
                 }else{
+                    CharSequence text = getText(R.string.falseawnser);
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-
-                            Intent i=new Intent(getApplicationContext(),MainScreen.class);
-                            startActivity(i);
+                            play();
                         }
                     }, 5000);
                 }
+
 
 
             }

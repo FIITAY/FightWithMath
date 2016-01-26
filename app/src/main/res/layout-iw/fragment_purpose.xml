@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:paddingTop="1sp">
 
     <TextView
         android:layout_width="wrap_content"
@@ -30,21 +31,21 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/tInstructions"
         android:textColor="@color/Maincolor"
-        android:textSize="35sp"
+        android:textSize="35dp"
         android:layout_gravity="center"
         android:paddingTop="35sp" />
 
     <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/scrollView"
+        android:id="@+id/scrollView2"
         android:layout_marginLeft="16sp"
         android:layout_marginRight="16sp"
         android:layout_marginBottom="16sp">
 
         <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="@string/tFullInstructions"
             android:layout_gravity="center"

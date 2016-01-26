@@ -13,7 +13,7 @@
 
     <Button
         android:layout_width="wrap_content"
-        android:layout_height="61dp"
+        android:layout_height="wrap_content"
         android:id="@+id/bPlay"
         android:textColor="#FF0000"
         android:textSize="32dp"
@@ -21,8 +21,8 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:background="@drawable/buttonplay"
-        android:layout_gravity="center"
-        android:layout_weight="0.27" />
+        android:layout_weight="0.27"
+        android:layout_gravity="center" />
 
     <Button
         android:layout_width="wrap_content"
@@ -31,7 +31,6 @@
         android:id="@+id/bShop"
         android:textColor="#00FF00"
         android:textSize="32dp"
-        android:layout_marginTop="41dp"
         android:layout_below="@+id/bPlay"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center" />
@@ -45,7 +44,8 @@
         android:textSize="32dp"
         android:layout_below="@+id/bShop"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_gravity="center" />
 
     <Button
         android:layout_width="164dp"
@@ -57,4 +57,31 @@
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"
         android:text="@string/bCredit" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="106dp"
+        android:layout_marginTop="20sp"
+        android:layout_gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/score"
+            android:textSize="32sp"
+            android:id="@+id/textView4"
+            android:layout_gravity="center" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="scoreholder"
+            android:textSize="32sp"
+            android:id="@+id/mtScore"
+            android:layout_gravity="center" />
+    </LinearLayout>
+
 </LinearLayout>

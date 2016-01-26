@@ -5,9 +5,9 @@
     <string name="bCredit">credits</string>
     <string name="bPlay">PLAY NOW</string>
     <string name="bShop">Shop</string>
-    <string name="bHelp">the purpose of the game</string>
+    <string name="bHelp"><![CDATA[Goal & Help]]></string>
     <string name="title_activity_credit" translatable="false">Credit</string>
-    <string name="credit"><![CDATA[by: Itay Finci &  Itay Chairman]]></string>
+    <string name="credit">by: Itay Finci</string>
     <string name="title_activity_game" translatable="false">GameActivity</string>
     <string name="title_activity_shop" translatable="false">ShopActivity</string>
     <string name="title_activity_purpose" translatable="false">PurposeActivity</string>
@@ -19,4 +19,12 @@
     <string name="falseawnser">you didnt answer right the question</string>
     <string name="sContinuing">switch for auto continue</string>
     <string name="score">score:</string>
+    <string name="tGoal">Game\'s Goal</string>
+    <string name="tFullGoal">The goal of the game is to solve the equation at the fastest time, in order to improve the player\'s skill in a fun way.</string>
+    <string name="tInstructions">Instructions:</string>
+    <string name="tFullInstructions">To start playing, press the "Play" button. Solve the equation as quick as possible by entering the answer next to the "X=", and press the "Solved!" Button. \n
+    After solving the equation, the game will present a new equation after 5 seconds.\n
+    In the game you are allowed to do what is needed in order to solve the equation. \n
+    The game is for a single player. \n
+    Audiance is 7th grade studants and above.</string>
 </resources>

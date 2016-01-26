@@ -13,21 +13,13 @@
     android:weightSum="1">
 
 
-    <Switch
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/sContinuing"
-        android:id="@+id/sContinuing"
-        android:layout_alignParentTop="true"
-        android:layout_alignRight="@+id/timer1"
-        android:layout_alignEnd="@+id/timer1"
-        android:layout_marginTop="54dp"
-        android:checked="false" />
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal">
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="60dp"
+        android:layout_weight="0.65">
 
         <LinearLayout
             android:orientation="horizontal"
@@ -60,7 +52,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:layout_weight="0.65"
         android:layout_gravity="center">
 
         <TextView

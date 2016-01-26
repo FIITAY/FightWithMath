@@ -1,5 +1,6 @@
 package itay.finci.org.fightwithmath;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -11,6 +12,9 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.TextView;
+
+import java.io.FileOutputStream;
 
 public class MainScreen extends AppCompatActivity {
 
@@ -20,6 +24,10 @@ public class MainScreen extends AppCompatActivity {
         setContentView(R.layout.activity_main_screen);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        TextView tmScore = (TextView) findViewById(R.id.mtScore);
+        tmScore.setText("" + ScoreManager.getInstance().getScore());
+
         buttonintent();
 
 
