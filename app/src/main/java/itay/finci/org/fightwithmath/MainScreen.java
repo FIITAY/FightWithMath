@@ -39,9 +39,6 @@ public class MainScreen extends AppCompatActivity {
         }catch (FileNotFoundException e ){
             e.printStackTrace();
             ScoreManager.getInstance().setScore(0);
-        }catch (IOException e){
-            e.printStackTrace();
-            ScoreManager.getInstance().setScore(0);
         }catch (NumberFormatException e) {
             e.printStackTrace();
             ScoreManager.getInstance().setScore(0);
