@@ -77,6 +77,7 @@ public class GameActivity extends AppCompatActivity {
                 new Equition("2x-3=11",7),
                 new Equition("13-x=x+3", 5)};
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,13 +95,29 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        indexx = new int[5];
+        for(int i=0; i< indexx.length ; i++){
+            indexx[i]= -1;
+        }
+        index = 0;
         play();
     }
 
     private void play(){
         //SETUP randomizer of with 1 to choose
         random = new Random();
-        placeindata = random.nextInt(equs.length);
+        boolean redo =false;
+        do{
+            placeindata = random.nextInt(equs.length);
+            redo =false;
+            for(int i=0; i< indexx.length ; i++){
+                if(placeindata == indexx[i]){
+                    redo = true;
+                }
+            }
+        }while(redo);
+        indexx[index]= placeindata;
+        index = (index +1)% indexx.length;
         //setup equles in tEquls
         tEquls.setText(equs[placeindata].getBody());
         //setup awnser in trueanser
