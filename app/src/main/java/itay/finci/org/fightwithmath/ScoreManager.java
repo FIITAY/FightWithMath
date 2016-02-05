@@ -1,11 +1,6 @@
 package itay.finci.org.fightwithmath;
 
 
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileReader;
-
 public class ScoreManager {
     private static ScoreManager ourInstance = new ScoreManager();
 

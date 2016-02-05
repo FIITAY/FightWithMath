@@ -25,6 +25,12 @@ import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.Struct;
 import java.util.Random;
 
@@ -42,6 +48,7 @@ public class GameActivity extends AppCompatActivity {
     Random random;
     int indexx[];
     int index;
+    private static final String FILE_NAME="score.txt";
     Equition[] equs =  {
                 new Equition("2(x+5)=14", 2),
                 new Equition("3(x+6)=21", 1),
@@ -133,11 +140,28 @@ public class GameActivity extends AppCompatActivity {
                 Context context = getApplicationContext();
 
                 int duration = Toast.LENGTH_LONG;
-                answer = Double.parseDouble(etAwnser.getText().toString());
+                try{
+                    answer = Double.parseDouble(etAwnser.getText().toString());
+                }catch (NumberFormatException e){
+                    answer = -100000000;
+                }
                 if(answer == trueAnser){
                     String string = " "+timersec / 1000+" ";
                     CharSequence text = getText(R.string.RIghtAwnser)+ string +getText(R.string.RightAwnser2);
                     ScoreManager.getInstance().addScore(timersec / 1000);
+
+                    BufferedOutputStream o;
+                    try {
+                        o = new BufferedOutputStream(new FileOutputStream(new File(getFilesDir(),FILE_NAME)));
+                        String s = "" + ScoreManager.getInstance().getScore()+ "";
+                        o.write(s.getBytes());
+                        o.close();
+                    }catch (FileNotFoundException e ){
+
+                    }catch (IOException e){
+
+                    }
+
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();
                     new Handler().postDelayed(new Runnable() {

@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="itay.finci.org.fightwithmath"
     android:versionCode="11"
-    android:versionName="1.0.2 build 34">
+    android:versionName="1.1 build 1">
 
     <application
         android:allowBackup="true"
