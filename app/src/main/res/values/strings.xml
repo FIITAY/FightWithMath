@@ -27,4 +27,7 @@
     In the game you are allowed to do what is needed in order to solve the equation. \n
     The game is for a single player. \n
     Audiance is 7th grade studants and above.</string>
+    <string name="tHello">hello,???</string>
+    <string name="sHello">hello,</string>
+    <string name="signin_other_error" translatable="false">/</string>
 </resources>

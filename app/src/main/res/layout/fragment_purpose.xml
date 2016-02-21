@@ -49,7 +49,8 @@
             android:text="@string/tFullInstructions"
             android:layout_gravity="center"
             android:textColor="@color/Maincolor"
-            android:paddingTop="25sp" />
+            android:paddingTop="180dp"
+            android:autoText="false" />
     </ScrollView>
 
 </LinearLayout>

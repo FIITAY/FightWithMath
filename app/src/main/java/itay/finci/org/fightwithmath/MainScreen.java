@@ -4,11 +4,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.games.Games;
+import com.google.android.gms.games.Player;
+import com.google.android.gms.plus.Plus;
+import com.google.example.games.basegameutils.BaseGameUtils;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -17,10 +25,21 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class MainScreen extends AppCompatActivity {
+public class MainScreen extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
     private static final String FILE_NAME="score.txt";
-    @Override
+    // Client used to interact with Google APIs
+    private GoogleApiClient mGoogleApiClient;
+    // request codes we use when invoking an external activity
+    private static final int RC_RESOLVE = 5000;
+    private static final int RC_UNUSED = 5001;
+    private static final int RC_SIGN_IN = 9001;
+    private boolean mResolvingConnectionFailure = false;
+    private boolean mAutoStartSignInflow = true;
+    private boolean mSignInClicked = false;
+    final String TAG = "Fwm";
+    TextView tHello;
 
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_screen);
@@ -46,8 +65,22 @@ public class MainScreen extends AppCompatActivity {
 
         TextView tmScore = (TextView) findViewById(R.id.mtScore);
         tmScore.setText("" + ScoreManager.getInstance().getScore());
+        // Create the Google API Client with access to Plus and Games
 
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .addApi(Plus.API).addScope(Plus.SCOPE_PLUS_LOGIN)
+                .addApi(Games.API).addScope(Games.SCOPE_GAMES)
+                .build();
+        tHello = (TextView) findViewById(R.id.tHello);
         buttonintent();
+    }
+    @Override
+     protected void onStart() {
+        super.onStart();
+        Log.d(TAG, "onStart(): connecting");
+        mGoogleApiClient.connect();
     }
 
     @Override
@@ -116,4 +149,55 @@ public class MainScreen extends AppCompatActivity {
         });
         //purpose button end
     }
+
+    @Override
+    public void onConnected(Bundle bundle) {
+        Log.d(TAG, "onConnected(): connected to Google APIs");
+
+        Player p = Games.Players.getCurrentPlayer(mGoogleApiClient);
+        String displayName;
+        if (p == null) {
+            Log.w(TAG, "mGamesClient.getCurrentPlayer() is NULL!");
+            displayName = "???";
+        } else {
+            displayName = p.getDisplayName();
+        }
+        tHello.setText(getString(R.string.sHello) + displayName);
+    }
+    @Override
+      public void onConnectionSuspended(int i) {
+        Log.d(TAG, "onConnectionSuspended(): attempting to connect");
+        mGoogleApiClient.connect();
+    }
+
+    @Override
+    public void onConnectionFailed(ConnectionResult connectionResult) {
+        if (mResolvingConnectionFailure) {
+            // already resolving
+            return;
+        }
+
+        // if the sign-in button was clicked or if auto sign-in is enabled,
+        // launch the sign-in flow
+        if (mSignInClicked || mAutoStartSignInflow) {
+            mAutoStartSignInflow = false;
+            mSignInClicked = false;
+            mResolvingConnectionFailure = true;
+
+            // Attempt to resolve the connection failure using BaseGameUtils.
+            // The R.string.signin_other_error value should reference a generic
+            // error string in your strings.xml file, such as "There was
+            // an issue with sign-in, please try again later."
+            if (!BaseGameUtils.resolveConnectionFailure(this,
+                    mGoogleApiClient, connectionResult,
+                    RC_SIGN_IN, String.valueOf(R.string.signin_other_error))) {
+                mResolvingConnectionFailure = false;
+            }
+        }
+
+        // Put code here to display the sign-in button
+
+    }
+
+
 }
