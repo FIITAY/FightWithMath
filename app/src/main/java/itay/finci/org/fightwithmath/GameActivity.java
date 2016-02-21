@@ -23,6 +23,10 @@ import android.widget.TextClock;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.games.Game;
+import com.google.android.gms.games.Games;
+
 import org.w3c.dom.Text;
 
 import java.io.BufferedOutputStream;
@@ -48,6 +52,7 @@ public class GameActivity extends AppCompatActivity {
     Random random;
     int indexx[];
     int index;
+    private GoogleApiClient mGoogleApiClient;
     private static final String FILE_NAME="score.txt";
     Equition[] equs =  {
                 new Equition("2(x+5)=14", 2),
@@ -90,6 +95,9 @@ public class GameActivity extends AppCompatActivity {
         etAwnser = (EditText) findViewById(R.id.etAwnser);
         tEquls = (TextView) findViewById(R.id.tEquls);
         tScore =(TextView) findViewById(R.id.tScore);
+
+        mGoogleApiClient = ScoreManager.getInstance().getMgoogleApiClient();
+
     }
 
     @Override
@@ -178,6 +186,8 @@ public class GameActivity extends AppCompatActivity {
                     }catch (IOException e){
 
                     }
+
+                    Games.Leaderboards.submitScore(mGoogleApiClient, (String) getText(R.string.leaderboard_top_score), ScoreManager.getInstance().getScore());
 
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();

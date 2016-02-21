@@ -89,7 +89,15 @@
             android:text="scoreholder"
             android:textSize="32sp"
             android:id="@+id/mtScore"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:paddingRight="50dp" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bLeaderbord"
+            android:background="@drawable/games_leaderboards_green" />
     </LinearLayout>
 
 </LinearLayout>

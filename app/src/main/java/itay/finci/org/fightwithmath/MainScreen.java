@@ -13,15 +13,21 @@ import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.games.Games;
+import com.google.android.gms.games.GamesStatusCodes;
 import com.google.android.gms.games.Player;
+import com.google.android.gms.games.leaderboard.LeaderboardVariant;
+import com.google.android.gms.games.leaderboard.Leaderboards;
 import com.google.android.gms.plus.Plus;
 import com.google.example.games.basegameutils.BaseGameUtils;
 
 import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -38,6 +44,7 @@ public class MainScreen extends AppCompatActivity implements GoogleApiClient.Con
     private boolean mSignInClicked = false;
     final String TAG = "Fwm";
     TextView tHello;
+    long leadbordscore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +80,7 @@ public class MainScreen extends AppCompatActivity implements GoogleApiClient.Con
                 .addApi(Plus.API).addScope(Plus.SCOPE_PLUS_LOGIN)
                 .addApi(Games.API).addScope(Games.SCOPE_GAMES)
                 .build();
+        ScoreManager.getInstance().setMgoogleApiClient(mGoogleApiClient);
         tHello = (TextView) findViewById(R.id.tHello);
         buttonintent();
     }
@@ -81,6 +89,8 @@ public class MainScreen extends AppCompatActivity implements GoogleApiClient.Con
         super.onStart();
         Log.d(TAG, "onStart(): connecting");
         mGoogleApiClient.connect();
+
+
     }
 
     @Override
@@ -104,10 +114,38 @@ public class MainScreen extends AppCompatActivity implements GoogleApiClient.Con
 
         return super.onOptionsItemSelected(item);
     }
+
+    private void loadScoreOfLeaderBoard() {
+        Games.Leaderboards.loadCurrentPlayerLeaderboardScore(mGoogleApiClient, getString(R.string.leaderboard_top_score), LeaderboardVariant.TIME_SPAN_ALL_TIME, LeaderboardVariant.COLLECTION_PUBLIC).setResultCallback(new ResultCallback<Leaderboards.LoadPlayerScoreResult>() {
+            @Override
+            public void onResult(final Leaderboards.LoadPlayerScoreResult scoreResult) {
+                if (isScoreResultValid(scoreResult)) {
+                    // here you can get the score like this
+                      leadbordscore = scoreResult.getScore().getRawScore();
+                }
+            }
+        });
+    }
+    private boolean isScoreResultValid(final Leaderboards.LoadPlayerScoreResult scoreResult) {
+        return scoreResult != null && GamesStatusCodes.STATUS_OK == scoreResult.getStatus().getStatusCode() && scoreResult.getScore() != null;
+    }
+
     public void buttonintent(){
         /**
          * this function will take all the buttons and make the intent for them when they presed.
          */
+
+        //leaderbord buuton start
+        Button bLeaderbord = (Button) findViewById(R.id.bLeaderbord);
+        bLeaderbord.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivityForResult(Games.Leaderboards.getLeaderboardIntent(mGoogleApiClient,
+                        (String) getText(R.string.leaderboard_top_score)), 1);
+
+            }
+        });
+
         //credit button start
         Button bCredit = (Button) findViewById(R.id.bCredit);
         bCredit.setOnClickListener(new View.OnClickListener() {
@@ -163,6 +201,25 @@ public class MainScreen extends AppCompatActivity implements GoogleApiClient.Con
             displayName = p.getDisplayName();
         }
         tHello.setText(getString(R.string.sHello) + displayName);
+
+        loadScoreOfLeaderBoard();
+
+        if(leadbordscore > ScoreManager.getInstance().getScore()){
+            ScoreManager.getInstance().setScore(leadbordscore);
+            BufferedOutputStream o;
+            try {
+                o = new BufferedOutputStream(new FileOutputStream(new File(getFilesDir(),FILE_NAME)));
+                String s = "" + ScoreManager.getInstance().getScore()+ "";
+                o.write(s.getBytes());
+                o.close();
+            }catch (FileNotFoundException e ){
+
+            }catch (IOException e){
+
+            }
+        }else{
+            Games.Leaderboards.submitScore(mGoogleApiClient, (String) getText(R.string.leaderboard_top_score), ScoreManager.getInstance().getScore());
+        }
     }
     @Override
       public void onConnectionSuspended(int i) {
