@@ -31,20 +31,14 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class MainScreen extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
+public class MainScreen extends AppCompatActivity  {
     private static final String FILE_NAME="score.txt";
-    // Client used to interact with Google APIs
-    private GoogleApiClient mGoogleApiClient;
+    // Client used to interact with Google API
     // request codes we use when invoking an external activity
-    private static final int RC_RESOLVE = 5000;
-    private static final int RC_UNUSED = 5001;
-    private static final int RC_SIGN_IN = 9001;
-    private boolean mResolvingConnectionFailure = false;
-    private boolean mAutoStartSignInflow = true;
-    private boolean mSignInClicked = false;
     final String TAG = "Fwm";
+    private GoogleApiClient mGoogleApiClient;
     TextView tHello;
-    long leadbordscore;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,52 +46,41 @@ public class MainScreen extends AppCompatActivity implements GoogleApiClient.Con
         setContentView(R.layout.activity_main_screen);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        
-        BufferedInputStream o;
-        Scanner sc;
-        try {
-            String s = "" + ScoreManager.getInstance().getScore();
-            byte[] arr = new byte[100];
-            sc = new Scanner(new FileInputStream(new File(getFilesDir(), FILE_NAME)));
-            int score = sc.nextInt();
-            ScoreManager.getInstance().setScore(score);
-            sc.close();
-        }catch (FileNotFoundException e ){
-            e.printStackTrace();
-            ScoreManager.getInstance().setScore(0);
-        }catch (NumberFormatException e) {
-            e.printStackTrace();
-            ScoreManager.getInstance().setScore(0);
-        }
+
+        tHello = (TextView) findViewById(R.id.tHello);
 
         TextView tmScore = (TextView) findViewById(R.id.mtScore);
         tmScore.setText("" + ScoreManager.getInstance().getScore());
         // Create the Google API Client with access to Plus and Games
+        mGoogleApiClient = ScoreManager.getInstance().getMgoogleApiClient();
 
-        mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .addConnectionCallbacks(this)
-                .addOnConnectionFailedListener(this)
-                .addApi(Plus.API).addScope(Plus.SCOPE_PLUS_LOGIN)
-                .addApi(Games.API).addScope(Games.SCOPE_GAMES)
-                .build();
-        ScoreManager.getInstance().setMgoogleApiClient(mGoogleApiClient);
-        tHello = (TextView) findViewById(R.id.tHello);
+        OnStartGMS(mGoogleApiClient);
+
         buttonintent();
     }
-    @Override
-     protected void onStart() {
-        super.onStart();
-        Log.d(TAG, "onStart(): connecting");
-        mGoogleApiClient.connect();
 
-
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main_screen, menu);
         return true;
+    }
+
+
+    private  void OnStartGMS(GoogleApiClient gms){
+        /**
+         * getting player name and using it for text that handel the name
+         */
+        Player p = Games.Players.getCurrentPlayer(gms);
+        String displayName;
+        if (p == null) {
+            Log.w(TAG, "mGamesClient.getCurrentPlayer() is NULL!");
+            displayName = "???";
+        } else {
+            displayName = p.getDisplayName();
+        }
+        tHello.setText(getString(R.string.sHello) + displayName);
     }
 
     @Override
@@ -115,20 +98,7 @@ public class MainScreen extends AppCompatActivity implements GoogleApiClient.Con
         return super.onOptionsItemSelected(item);
     }
 
-    private void loadScoreOfLeaderBoard() {
-        Games.Leaderboards.loadCurrentPlayerLeaderboardScore(mGoogleApiClient, getString(R.string.leaderboard_top_score), LeaderboardVariant.TIME_SPAN_ALL_TIME, LeaderboardVariant.COLLECTION_PUBLIC).setResultCallback(new ResultCallback<Leaderboards.LoadPlayerScoreResult>() {
-            @Override
-            public void onResult(final Leaderboards.LoadPlayerScoreResult scoreResult) {
-                if (isScoreResultValid(scoreResult)) {
-                    // here you can get the score like this
-                      leadbordscore = scoreResult.getScore().getRawScore();
-                }
-            }
-        });
-    }
-    private boolean isScoreResultValid(final Leaderboards.LoadPlayerScoreResult scoreResult) {
-        return scoreResult != null && GamesStatusCodes.STATUS_OK == scoreResult.getStatus().getStatusCode() && scoreResult.getScore() != null;
-    }
+
 
     public void buttonintent(){
         /**
@@ -156,7 +126,7 @@ public class MainScreen extends AppCompatActivity implements GoogleApiClient.Con
             }
         });
         //credit button end
-        //playgame button start
+        //play game button start
         Button bPlay = (Button) findViewById(R.id.bPlay);
         bPlay.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -164,7 +134,7 @@ public class MainScreen extends AppCompatActivity implements GoogleApiClient.Con
                 startActivity(new Intent(getApplicationContext(), GameActivity.class));
             }
         });
-        //playgame button end
+        //play game button end
         //shop button start
 
         Button bShop = (Button) findViewById(R.id.bShop);
@@ -188,73 +158,7 @@ public class MainScreen extends AppCompatActivity implements GoogleApiClient.Con
         //purpose button end
     }
 
-    @Override
-    public void onConnected(Bundle bundle) {
-        Log.d(TAG, "onConnected(): connected to Google APIs");
 
-        Player p = Games.Players.getCurrentPlayer(mGoogleApiClient);
-        String displayName;
-        if (p == null) {
-            Log.w(TAG, "mGamesClient.getCurrentPlayer() is NULL!");
-            displayName = "???";
-        } else {
-            displayName = p.getDisplayName();
-        }
-        tHello.setText(getString(R.string.sHello) + displayName);
-
-        loadScoreOfLeaderBoard();
-
-        if(leadbordscore > ScoreManager.getInstance().getScore()){
-            ScoreManager.getInstance().setScore(leadbordscore);
-            BufferedOutputStream o;
-            try {
-                o = new BufferedOutputStream(new FileOutputStream(new File(getFilesDir(),FILE_NAME)));
-                String s = "" + ScoreManager.getInstance().getScore()+ "";
-                o.write(s.getBytes());
-                o.close();
-            }catch (FileNotFoundException e ){
-
-            }catch (IOException e){
-
-            }
-        }else{
-            Games.Leaderboards.submitScore(mGoogleApiClient, (String) getText(R.string.leaderboard_top_score), ScoreManager.getInstance().getScore());
-        }
-    }
-    @Override
-      public void onConnectionSuspended(int i) {
-        Log.d(TAG, "onConnectionSuspended(): attempting to connect");
-        mGoogleApiClient.connect();
-    }
-
-    @Override
-    public void onConnectionFailed(ConnectionResult connectionResult) {
-        if (mResolvingConnectionFailure) {
-            // already resolving
-            return;
-        }
-
-        // if the sign-in button was clicked or if auto sign-in is enabled,
-        // launch the sign-in flow
-        if (mSignInClicked || mAutoStartSignInflow) {
-            mAutoStartSignInflow = false;
-            mSignInClicked = false;
-            mResolvingConnectionFailure = true;
-
-            // Attempt to resolve the connection failure using BaseGameUtils.
-            // The R.string.signin_other_error value should reference a generic
-            // error string in your strings.xml file, such as "There was
-            // an issue with sign-in, please try again later."
-            if (!BaseGameUtils.resolveConnectionFailure(this,
-                    mGoogleApiClient, connectionResult,
-                    RC_SIGN_IN, String.valueOf(R.string.signin_other_error))) {
-                mResolvingConnectionFailure = false;
-            }
-        }
-
-        // Put code here to display the sign-in button
-
-    }
 
 
 }
