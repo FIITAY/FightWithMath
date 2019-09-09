@@ -13,6 +13,8 @@
     <string name="falseawnser">ענית לא נכון על השאלה</string>
     <string name="sContinuing">הזז להמשך אוטומטי</string>
     <string name="score">ניקוד:</string>
+    <string name="action_settings" translatable="false"></string>
+    <string name="noVrsion">גירסה</string>
     <string name="tGoal">מטרת המשחק</string>
     <string name="tInstructions">הוראות</string>
     <string name="bHelp">מטרת המשחק והוראות</string>

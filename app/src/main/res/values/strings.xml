@@ -19,6 +19,7 @@
     <string name="falseawnser">you didnt answer right the question</string>
     <string name="sContinuing">switch for auto continue</string>
     <string name="score">score:</string>
+    <string name="noVrsion">Version</string>
     <string name="tGoal">Game\'s Goal</string>
     <string name="tFullGoal">The goal of the game is to solve the equation at the fastest time, in order to improve the player\'s skill in a fun way.</string>
     <string name="tInstructions">Instructions:</string>
