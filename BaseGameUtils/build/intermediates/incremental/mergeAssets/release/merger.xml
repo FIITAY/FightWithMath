@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="/home/itay/projects/android-basic-samples/BasicSamples/libraries/BaseGameUtils/src/main/assets"/></dataSet><dataSet config="release"><source path="/home/itay/projects/android-basic-samples/BasicSamples/libraries/BaseGameUtils/src/release/assets"/></dataSet></merger>

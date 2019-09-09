@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <string name="app_id" translatable="false">216619136679</string>
+    <string name="package_name" translatable="false">itay.finci.org.fightwithmath</string>
+    <string name="achievement_first_time" translatable="false">CgkIp-2G_KYGEAIQAg</string>
+    <string name="achievement_asf" translatable="false">CgkIp-2G_KYGEAIQAw</string>
+    <string name="achievement_afsd" translatable="false">CgkIp-2G_KYGEAIQBA</string>
+    <string name="achievement_afd" translatable="false">CgkIp-2G_KYGEAIQBQ</string>
+    <string name="achievement_fdas" translatable="false">CgkIp-2G_KYGEAIQBg</string>
+    <string name="leaderboard_top_score" translatable="false">CgkIp-2G_KYGEAIQAQ</string>
+</resources>

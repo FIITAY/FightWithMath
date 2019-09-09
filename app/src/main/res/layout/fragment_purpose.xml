@@ -1,13 +1,56 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="itay.finci.org.fightwithmath.PurposeActivityFragment"
-    tools:showIn="@layout/activity_purpose">
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/tGoal"
+        android:layout_gravity="center"
+        android:textColor="@color/Maincolor"
+        android:textSize="35sp"
+        android:layout_marginTop="50sp" />
 
-</RelativeLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/tFullGoal"
+        android:layout_gravity="center"
+        android:textColor="@color/Maincolor"
+        android:paddingTop="25sp"
+        android:layout_marginLeft="16sp"
+        android:layout_marginRight="16sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/tInstructions"
+        android:textColor="@color/Maincolor"
+        android:textSize="35sp"
+        android:layout_gravity="center"
+        android:paddingTop="35sp" />
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView"
+        android:layout_marginLeft="16sp"
+        android:layout_marginRight="16sp"
+        android:layout_marginBottom="16sp">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/tFullInstructions"
+            android:layout_gravity="center"
+            android:textColor="@color/Maincolor"
+            android:paddingTop="180dp"
+            android:autoText="false" />
+    </ScrollView>
+
+</LinearLayout>

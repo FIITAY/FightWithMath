@@ -11,18 +11,37 @@
     android:orientation="vertical"
     android:weightSum="1">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/tHello"
+        android:id="@+id/tHello"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.27"
+        android:layout_marginTop="57dp" />
+
     <Button
         android:layout_width="wrap_content"
-        android:layout_height="61dp"
+        android:layout_height="76dp"
         android:id="@+id/bPlay"
         android:textColor="#FF0000"
         android:textSize="32dp"
-        android:layout_marginTop="57dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:background="@drawable/buttonplay"
-        android:layout_gravity="center"
-        android:layout_weight="0.27" />
+        android:layout_gravity="center" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/bShop"
+        android:id="@+id/bShop"
+        android:textColor="#00FF00"
+        android:textSize="32dp"
+        android:layout_below="@+id/bPlay"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center" />
 
     <Button
         android:layout_width="wrap_content"
@@ -37,19 +56,7 @@
         android:layout_gravity="center" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/bShop"
-        android:id="@+id/bShop"
-        android:textColor="#00FF00"
-        android:textSize="32dp"
-        android:layout_marginTop="41dp"
-        android:layout_below="@+id/bPlay"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center_horizontal" />
-
-    <Button
-        android:layout_width="105dp"
+        android:layout_width="164dp"
         android:layout_height="85dp"
         android:id="@+id/bCredit"
         android:textColor="#FFFF00"
@@ -57,5 +64,40 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"
-        android:background="@drawable/copyright"/>
+        android:text="@string/bCredit" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="106dp"
+        android:layout_marginTop="20sp"
+        android:layout_gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/score"
+            android:textSize="32sp"
+            android:id="@+id/textView4"
+            android:layout_gravity="center" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="scoreholder"
+            android:textSize="32sp"
+            android:id="@+id/mtScore"
+            android:layout_gravity="center"
+            android:paddingRight="50dp" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bLeaderbord"
+            android:background="@drawable/games_leaderboards_green" />
+    </LinearLayout>
+
 </LinearLayout>

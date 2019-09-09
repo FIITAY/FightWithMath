@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="itay.finci.org.fightwithmath"
-    android:versionCode="6"
-    android:versionName="1.0.2 build 8">
-
+    android:versionCode="29"
+    android:versionName="1.1.0 build 40">
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <meta-data android:name="com.google.android.gms.games.APP_ID"
+            android:value="@string/app_id" />
+        <meta-data android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version"/>
         <activity
             android:name=".MainScreen"
             android:label="@string/app_name"
